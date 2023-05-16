@@ -38,6 +38,7 @@ Now, the bulk of my data cleaning is here. Even though I selected a good subset 
 If you are well-versed in video game theory, you may ask how a KDR column is possible if deaths=0. It is certainly possible that a team can go an entire round without dying (and indeed, the data does show that this happens multiple times.) While it is not ideal, I have elected to treat the cases where deaths=0 as deaths=1. I believe this is fair, as it is the most accurate KDR for the team that isn't infinity.
 
 Here, I show part of my final cleaned dataset.
+
 | firstblood   | firstdragon   | firstherald   | firstbaron   | firsttower   | firstmidtower   | firsttothreetowers   | teamname                      | teamid                                  |   teamkills |   teamdeaths | result   |   totalgold |   firsttotal |      kdr |
 |:-------------|:--------------|:--------------|:-------------|:-------------|:----------------|:---------------------|:------------------------------|:----------------------------------------|------------:|-------------:|:---------|------------:|-------------:|---------:|
 | True         | False         | True          | False        | True         | True            | True                 | Fredit BRION Challengers      | oe:team:68911b3329146587617ab2973106e23 |           9 |           19 | Lost     |       47070 |            5 | 0.473684 |
