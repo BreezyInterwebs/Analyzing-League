@@ -4,7 +4,7 @@ League of Legends is a highly popular MOBA developed by Riot Games. Enjoyed by m
 We are using Oracle Elixir's 2022 competitive match dataset, a file which contains 149,400 rows and an equally staggering 123 rows.
 Luckily, we're only interested in a select few.
 
-`firstblood, firstdragon, firstherald, firstbaron, firsttower, firstmidtower, firsttothreetowers`
+`firstblood, firstdragon, firstherald, firstbaron, firsttower, firstmidtower, firsttothreetowers`<br>
 These columns contain information about which team reached a certain milestone first. 
 - Firstblood shows which team got the first kill of the game.
 - Firstdragon shows which team got the first dragon kill of the game.
@@ -13,10 +13,10 @@ These columns contain information about which team reached a certain milestone f
 - Firsttower shows which team destroyed the enemy's lane tower first.
 - Firstmidtower shows which team destroyed the enemy's midlane tower first.
 
-`teamname, teamid'
+`teamname, teamid`<br>
 These columns are fairly self-explanatory. While they are not used extensively, they are important to keep in for interpretability.
 
-`teamkills, teamdeaths, result, totalgold`
+`teamkills, teamdeaths, result, totalgold`<br>
 These columns serve as our indicators of performance and overall game state.
 - Teamkills shows how many kills the team achieved during the game.
 - Teamdeaths show how many deaths the team took during the game.
