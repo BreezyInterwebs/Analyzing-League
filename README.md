@@ -51,9 +51,11 @@ If you are well-versed in video game theory, you may ask how a KDR column is pos
 ### Univariate Analysis
 <iframe src="assets/firsttotal_dist.html" width=800 height=600 frameBorder=0></iframe>
 While this univariate analysis may not seem particular interesting, it is the asymmetry that I think shows something unexpected in the data. Although there are 7 "firsts" contained within our dataframe, and you would expect data to be paired (for example, one team with 0 "firsts" should have a corresponding opponent of 7 "firsts"), the difference in frequency shows that this is not the case. We can say that these milestones are not always achieved within a game.
+
 ### Bivariate Analysis
 <iframe src="assets/gold_firsttotal_dist.html" width=800 height=600 frameBorder=0></iframe>
 Here, we plot the distribution of `totalgold`, categorized by "firsttotals". We see an interesting trend. Each marginal distribution looks somewhat normal, with the mean and variance seemingly increasing from 0 to 3, but *decreasing* from 4 to 7. One possible explanation is that teams who get more "firsts" (and are therefore better at the game) end their rounds quicker, decreasing the amount of time that gold can be obtained.
+
 ### Interesting Aggregates
 |   firsttotal |   teamdeaths |   teamkills |   totalgold |
 |-------------:|-------------:|------------:|------------:|
