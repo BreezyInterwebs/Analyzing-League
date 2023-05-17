@@ -54,9 +54,10 @@ While this univariate analysis may not seem particular interesting, it is the as
 
 ### Bivariate Analysis
 <iframe src="assets/gold_firsttotal_dist.html" width=800 height=600 frameBorder=0></iframe>
-Here, we plot the distribution of `totalgold`, categorized by "firsttotals". We see an interesting trend. Each marginal distribution looks somewhat normal, with the mean and variance seemingly increasing from 0 to 3, but *decreasing* from 4 to 7. One possible explanation is that teams who get more "firsts" (and are therefore better at the game) end their rounds quicker, decreasing the amount of time that gold can be obtained.
+Here, we plot the distribution of `totalgold`, categorized by `firsttotals`. We see an interesting trend. Each marginal distribution looks somewhat normal, with the mean and variance seemingly increasing from 0 to 3, but *decreasing* from 4 to 7. One possible explanation is that teams who get more "firsts" (and are therefore better at the game) end their rounds quicker, decreasing the amount of time that gold can be obtained. This is another potential avenue of exploration, as the dataset does contain information about the length of each game. However, I felt that time is not very indicitive of a team's performance; hence, it was left out.
 
 ### Interesting Aggregates
+
 |   firsttotal |   teamdeaths |   teamkills |   totalgold |
 |-------------:|-------------:|------------:|------------:|
 |            0 |     19.6218  |     7.60144 |     45971.3 |
@@ -80,3 +81,13 @@ There are most likely not NMAR data in the set. Because the data is autocollecte
 While creating the cleaned dataset, I noticed that some of the team names and IDs were NaNs. Therefore, I wanted to find out the missingness dependency of these columns. The `teamid` column was used to avoid any potential duplicate names.
 
 For this first missingness test, I tested `teamid` against `league`, the division that each match was played in. I used the TVD as my test statistic for the permutation test.
+
+<iframe src="assets/tvds_mar.html" width=800 height=600 frameBorder=0></iframe>
+
+Here, I show the distribution of our observed TVD (a red dashed line) and the distribution of TVDs under random permutations (shown in blue bars). As we can see, the observed TVD is much higher than the random permutation TVDs. In fact, if we calculate the observed TVD and the p-value of the observed TVD, we get ~0. Therefore, we'd make the conclusion that `teamid`'s missingness depends on `league.`
+
+On the other hand, let's look at this second missingness test, where I put `teamid` against a result column, `totalgold`.
+
+<iframe src="assets/means_mcar.html" width=800 height=600 frameBorder=0></iframe>
+
+Here, I elect to use the absolute difference in means as my test statistic. Under the random permutations, we can see that our observed absolute mean difference falls within a reasonable range. The calculated p-value in this instance is approximately ~0.13. This is a fairly common result -- therefore, `teamid`'s missingness does not depend on `totalgold`.
