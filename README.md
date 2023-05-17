@@ -86,8 +86,33 @@ For this first missingness test, I tested `teamid` against `league`, the divisio
 
 Here, I show the distribution of our observed TVD (a red dashed line) and the distribution of TVDs under random permutations (shown in blue bars). As we can see, the observed TVD is much higher than the random permutation TVDs. In fact, if we calculate the observed TVD and the p-value of the observed TVD, we get ~0. Therefore, we'd make the conclusion that `teamid`'s missingness depends on `league.`
 
+***
+
 On the other hand, let's look at this second missingness test, where I put `teamid` against a result column, `totalgold`.
 
 <iframe src="assets/means_mcar.html" width=800 height=600 frameBorder=0></iframe>
 
 Here, I elect to use the absolute difference in means as my test statistic. Under the random permutations, we can see that our observed absolute mean difference falls within a reasonable range. The calculated p-value in this instance is approximately ~0.13. This is a fairly common result -- therefore, `teamid`'s missingness does not depend on `totalgold`.
+
+## Hypothesis Testing
+
+Once again, we state the original question that we are looking to explore.
+*Is it possible to predict the outcome of a match, based on "firsts"? How well do teams perform based on how many they get?*
+
+**Null Hypothesis:** A team's count of "checkpoints" has no effect on their result and performance. In other words, you cannot predict the outcome and performance of a match based on how many "firsts" each team gets.
+**Alternative Hypothesis:** There is a correlation between the number of "firsts" and result/performance. You can predict the outcome of a match.
+
+My choice of test statistic will be the variances of each metric. Because all of my metrics are numerical, I felt that the variances would be the clearest indication of a certain hypothesis. Under the null hypothesis, the distribution of our metric should be relatively close to 0 because a uniform distribution would make each category of `firsttotal` be close to the mean. On the other hand, a skewed distribution would bias the results for each category of `firsttotal`, making the variances diverge quickly. 
+
+For my significance level, I felt that alpha = 0.01 would be suitable. Although 0.05 is a good rule of thumb for general statistics, I feel that a 1/20 occurence is not "uncommon" enough. A 1% chance is more reasonable, especially for making a stronger conclusion.
+
+In my hypothesis testing, I randomly permute the `firsttotals`, then calculate the variances of each metric. In this way, I can see if how each metric responds to our hypothesis, and if we can reject any of them individually. Instead of embedding four graphs to demonstrate each distribution, I will instead z-score our test statistic, and display the results.
+
+```
+z-score observed variance of teamkills:  1566.0261875547428
+z-score observed variance of teamdeaths:  1633.79757470659
+z-score observed variance of totalgold:  1158.0213374303003
+z-score observed variance of result:  2361.209022801198
+```
+
+Our observed statistics are 34-48 standard deviations from the mean under the null hypothesis. Our p-values are also ~0 for these cases. Thus, we would reject the null hypothesis. It seems that there is a correlation between "firsts" and performance of the team, and that it may be possible to predict the outcome of matches and a team's performance based on "firsts".
