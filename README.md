@@ -33,9 +33,7 @@ The first thing I had to do was to figure out what columns were contained in the
 
 The second issue that the dataset documentation noted was that the dataset contained both aggregate and individual data. Because I was only interested in team performance, I had to find a way to remove the individual rows. I did this by noting that the columns related to team performance, such as `Firsttower` were NaNs in the player rows. I simply created a filter to only keep the rows where `Firsttower` existed.
 
-Now, the bulk of my data cleaning is here. Even though I selected a good subset of the columns, many of them were still useless. For example, `Firstbloodkill` sounds similar to `Firstblood`, but it is meant to signal which player got the first kill, rather than which team got the first kill. These types of columns had to be removed. Next, I changed the datatypes of many of the columns. The "firsts" were converted to booleans from integers (represented by objects), in order to make them more readable and usable. A "firsttotal" column was added as an aggregate stat, although each "firsts" were maintained in case a future use was necessary. I converted `teamkills, teamdeaths, totalgold` into integers in order to make them usable, and finally added a `kdr` column for exploratory purposes.
-
-If you are well-versed in video game theory, you may ask how a KDR column is possible if deaths=0. It is certainly possible that a team can go an entire round without dying (and indeed, the data does show that this happens multiple times.) While it is not ideal, I have elected to treat the cases where deaths=0 as deaths=1. I believe this is fair, as it is the most accurate KDR for the team that isn't infinity.
+Now, the bulk of my data cleaning is here. Even though I selected a good subset of the columns, many of them were still useless. For example, `Firstbloodkill` sounds similar to `Firstblood`, but it is meant to signal which player got the first kill, rather than which team got the first kill. These types of columns had to be removed. Next, I changed the datatypes of many of the columns. The "firsts" were converted to booleans from integers (represented by objects), in order to make them more readable and usable. A `firsttotal` column was added as an aggregate stat, although each "firsts" were maintained in case a future use was necessary. I converted `teamkills, teamdeaths, totalgold` into integers in order to make them usable, and finally added a `kdr` column for exploratory purposes.
 
 Here, I show part of my final cleaned dataset.
 
@@ -46,3 +44,12 @@ Here, I show part of my final cleaned dataset.
 | False        | False         | True          | False        | False        | False           | False                | T1 Challengers                | oe:team:6dcacec00a6ba7576c5ab7f30c995cd |           3 |           16 | Lost     |       57629 |            1 | 0.1875   |
 | True         | True          | False         | True         | True         | True            | True                 | Liiv SANDBOX Challengers      | oe:team:5380cdbc2ad2b8082624f48f99f6672 |          16 |            3 | Won      |       71004 |            6 | 5.33333  |
 | False        | True          | False         | True         | True         | True            | True                 | KT Rolster Challengers        | oe:team:b9733b8e8aa341319bbaf1035198a28 |          14 |            5 | Won      |       62868 |            5 | 2.8      |
+
+##### Quick Note
+If you are well-versed in video game theory, you may ask how a KDR column is possible if deaths=0. It is certainly possible that a team can go an entire round without dying (and indeed, the data does show that this happens multiple times.) While it is not ideal, I have elected to treat the cases where deaths=0 as deaths=1. I believe this is fair, as it is the most accurate KDR for the team that isn't infinity. However, this is only for the purposes of the `kdr` column. The `teamdeaths` column is left unmodified.
+
+### Univariate Analysis
+<iframe src="assets/firsttotal_dist.html" width=800 height=600 frameBorder=0></iframe>
+While this univariate analysis may not seem particular interesting, it is the asymmetry that I think shows something unexpected in the data. Although there are 7 "firsts" contained within our dataframe, and you would expect data to be paired (for example, one team with 0 "firsts" should have a corresponding opponent of 7 "firsts"), the difference in frequency shows that this is not the case. We can say that these milestones are not always achieved within a game.
+### Bivariate Analysis
+<iframe src="assets/gold_firsttotal_dist.html" width=800 height=600 frameBorder=0></iframe>
