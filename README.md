@@ -67,6 +67,7 @@ Here, we plot the distribution of `totalgold`, categorized by "firsttotals". We 
 |            5 |     11.7692  |    18.0329  |     61282.7 |
 |            6 |      9.62439 |    19.0398  |     60229.6 |
 |            7 |      7.86161 |    19.5742  |     58941.9 |
+
 Here with our pivot table indexed by `firsttotal`, we can see some of the trends demonstrated earlier, specifically `totalgold`. I elected to aggregate using means of the results. Here, this pivot tables allows us to see the overall trend that the `firsttotal` has on the results, and this indeed verifies the trend that we saw in our bivariate analysis.
 
 
