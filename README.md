@@ -53,3 +53,27 @@ If you are well-versed in video game theory, you may ask how a KDR column is pos
 While this univariate analysis may not seem particular interesting, it is the asymmetry that I think shows something unexpected in the data. Although there are 7 "firsts" contained within our dataframe, and you would expect data to be paired (for example, one team with 0 "firsts" should have a corresponding opponent of 7 "firsts"), the difference in frequency shows that this is not the case. We can say that these milestones are not always achieved within a game.
 ### Bivariate Analysis
 <iframe src="assets/gold_firsttotal_dist.html" width=800 height=600 frameBorder=0></iframe>
+Here, we plot the distribution of `totalgold`, categorized by "firsttotals". We see an interesting trend. Each marginal distribution looks somewhat normal, with the mean and variance seemingly increasing from 0 to 3, but *decreasing* from 4 to 7. One possible explanation is that teams who get more "firsts" (and are therefore better at the game) end their rounds quicker, decreasing the amount of time that gold can be obtained.
+### Interesting Aggregates
+|   firsttotal |   teamdeaths |   teamkills |   totalgold |
+|-------------:|-------------:|------------:|------------:|
+|            0 |     19.6218  |     7.60144 |     45971.3 |
+|            1 |     19.0026  |     9.60525 |     50631.4 |
+|            2 |     17.9601  |    11.9968  |     55558.4 |
+|            3 |     16.0841  |    14.1286  |     59075.8 |
+|            4 |     13.977   |    16.2089  |     61038.4 |
+|            5 |     11.7692  |    18.0329  |     61282.7 |
+|            6 |      9.62439 |    19.0398  |     60229.6 |
+|            7 |      7.86161 |    19.5742  |     58941.9 |
+Here with our pivot table indexed by `firsttotal`, we can see some of the trends demonstrated earlier, specifically `totalgold`. I elected to aggregate using means of the results. Here, this pivot tables allows us to see the overall trend that the `firsttotal` has on the results, and this indeed verifies the trend that we saw in our bivariate analysis.
+
+
+## Assessment of Missingness
+
+#### NMAR Analysis
+There are most likely not NMAR data in the set. Because the data is autocollected statistics about games, data which is left out will either be from outside confounding factors (for example, lower level leagues may not have as robust reporting systems) or missing by design. Since the data collection process shouldn't be biased on the data itself --unlike for example a self-reporting system-- it is missing at random.
+
+#### Missingness Dependency
+While creating the cleaned dataset, I noticed that some of the team names and IDs were NaNs. Therefore, I wanted to find out the missingness dependency of these columns. The `teamid` column was used to avoid any potential duplicate names.
+
+For this first missingness test, I tested `teamid` against `league`, the division that each match was played in. I used the TVD as my test statistic for the permutation test.
