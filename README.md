@@ -1,3 +1,5 @@
+by: Jalen Li
+
 ## Introduction
 League of Legends is a highly popular MOBA developed by Riot Games. Enjoyed by millions, it has a flourishing casual and competitive gaming scene. The dataset that we are looking into contains a wealth of information about games played in the competitive environment, such as stats about each team's performance, meta-information about the teams themselves, and whether certain milestones are achieved. It is important to note that competitive League is almost exclusively played on Summoner's Rift, League's most popular map. As a casual player or commentator for League, there may be too much information about the game to follow along. How can we find something simple to focus on in order to understand how the game is progressing?
 
