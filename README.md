@@ -115,4 +115,4 @@ z-score observed variance of totalgold:  1158.0213374303003
 z-score observed variance of result:  2361.209022801198
 ```
 
-Our observed statistics are 34-48 standard deviations from the mean under the null hypothesis. Our p-values are also ~0 for these cases. Thus, we would reject the null hypothesis. It seems that there is a correlation between "firsts" and the performance of the team, and that it may be possible to predict the outcome of matches and a team's performance based on "firsts".
+Our observed statistics are a few thousand standard deviations from the mean variance under the null hypothesis. Our p-values are also ~0 for these cases. Thus, we would reject the null hypothesis. It seems that there is a correlation between "firsts" and the performance of the team, and that it may be possible to predict the outcome of matches and a team's performance based on "firsts".
