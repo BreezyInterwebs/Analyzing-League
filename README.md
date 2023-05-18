@@ -99,7 +99,7 @@ Here, I elect to use the absolute difference in means as my test statistic. Unde
 Once again, we state the original question that we are looking to explore.
 *Is it possible to predict the outcome of a match, based on "firsts"? How well do teams perform based on how many they get?*
 
-**Null Hypothesis:** A team's count of "checkpoints" has no effect on their result and performance. In other words, you cannot predict the outcome and performance of a match based on how many "firsts" each team gets.
+**Null Hypothesis:** A team's count of "firsts" has no effect on their result and performance. In other words, you cannot predict the outcome and performance of a match based on how many "firsts" each team gets.
 **Alternative Hypothesis:** There is a correlation between the number of "firsts" and result/performance. You can potentially predict the outcome of a match.
 
 My choice of test statistic will be the variances of each metric. Because all of my metrics are numerical, I felt that the variances would be the clearest indication of a certain hypothesis. Under the null hypothesis, the distribution of our metric should be relatively close to 0 because a uniform distribution would make each category of `firsttotal` be close to the mean. On the other hand, a skewed distribution would bias the results for each category of `firsttotal`, making the variance diverge quickly.
